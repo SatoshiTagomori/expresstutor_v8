@@ -1,0 +1,52 @@
+<% current_user.profile.nil? ? m=Profile.new : m=current_user.profile %>
+
+<%= form_with model: m,class:'form-group user_edit_form' do |p| %>
+    <%= p.label :email, 'EMAIL' ,class: 'form-label' %>
+    <%= p.text_field :email ,class: 'form-control' %>
+    <%= p.label :name, 'お名前' ,class: 'form-label' %>
+    <%= p.text_field :name, class: 'form-control' %>
+    <%= p.label :cname, 'お子様の名前',class: 'form-label' %>
+    <%= p.text_field :cname, class: 'form-control' %>
+    <%= p.label :pref, '都道府県',class: 'form-label' %>
+    <%= p.collection_select :pref_id,Pref.all,:id,:name,{include_blank: true}, {class: 'form-control'} %>
+    <%= p.label :tel, '電話番号',class: 'form-label' %>
+    <%= p.text_field :tel, class: 'form-control' %>
+    <%= p.label :year, 'お子様の生まれ年',class: 'form-label' %>
+    <%= p.select :year, 2000..Time.now.year.to_i,{include_blank: true}, class: 'form-control' %>
+    <%= p.label :month, 'お子様の生まれ月',class: 'form-label' %>
+    <%= p.select :month, 1..12,{include_blank: true},class: 'form-control' %>
+    <%= p.submit '登録',class: 'btn btn-primary w-100 add_button' %>
+<% end %>
+
+<script>
+    window.onload = function(){
+        document.getElementsByClassName('add_button')[0].setAttribute('disabled','disabled')
+        let inputs = document.getElementsByTagName('input');
+        let selects = document.getElementsByTagName('select');
+        Object.keys(inputs).forEach(function(key){
+            inputs[key].addEventListener('change',set_add_button,false);
+        })
+        Object.keys(selects).forEach(function(key){
+            selects[key].addEventListener('change',set_add_button,false);
+        })
+        
+        function set_add_button(){
+            if(not_blank()===true){
+                document.getElementsByClassName('add_button')[0].removeAttribute('disabled')
+            }else{
+                document.getElementsByClassName('add_button')[0].setAttribute('disabled','disabled')
+            }
+        }
+        
+        function not_blank(){
+            let flag = true;
+            Object.keys(inputs).forEach(function(key){
+                if(inputs[key].value ===''){flag=false}
+            })
+            Object.keys(selects).forEach(function(key){
+                if(selects[key].value===''){flag=false}
+            })
+            return flag;
+        }
+    }
+</script>

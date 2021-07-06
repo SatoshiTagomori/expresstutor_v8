@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_user: one
+  course: one
+  subscription: MyString
+  log: MyText
+
+two:
+  line_user: two
+  course: two
+  subscription: MyString
+  log: MyText

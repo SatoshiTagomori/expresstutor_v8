@@ -1,0 +1,120 @@
+$threshold: 960px;
+$h2_back: darkgreen;
+
+/*main*/
+main{
+    clear:both;
+    margin:0 auto;
+    @media (max-width: $threshold){
+        width:90%;
+        margin:0 auto;
+    }
+}
+
+/*見出し部分*/
+h2{
+    background-color: $h2_back;
+    color:white;
+    padding:10px 0;
+    text-align:center;
+    span{
+        display:inline-block;
+    }
+}
+h3{
+    text-align:center;
+    color:gray;
+    &:before,&:after{
+        content:'~';
+    }
+}
+section{
+    max-width: ($threshold);
+    margin:0 auto;
+    clear:both;
+    @media (max-width: ($threshold)){
+        width: 90%;
+    }
+}
+
+
+/*ロゴ部分*/
+.logo{
+    display:block;
+    width:300px;
+    float:left;
+    margin:10px;
+    img{
+        width:100%;
+    }
+    @media (max-width: ($threshold)){
+        float:none;
+        width:90%;
+        margin:0 auto;
+    }
+}
+/*マイページへのリンク*/
+.profile_link{
+    display:block;
+    float:right;
+    margin:10px;
+    width:150px;
+    img{
+        width:100%;
+    }
+    @media (max-width: $threshold){
+        float:none;
+        margin:10px auto;
+    }
+}
+
+
+/*ナビゲーション*/
+nav{
+    clear:both;
+    max-width:960px;
+    margin:0 auto;
+    &:after{
+        content:'';
+        display:block;
+        clear:both;
+    }
+    @media (max-width: $threshold){
+        width:100%;
+    }
+    a{
+       display:block;
+       float:left;
+       box-sizing:border-box;
+       text-align:center;
+       width:25%;
+       text-decoration:none;
+       border-bottom:solid 2px gray;
+       border-right:solid 2px gray;
+       font-weight:bold;
+       font-size:18px;
+       padding:10px 0;
+       &:last-child{
+           border-right:none;
+       }
+       @media (max-width: $threshold){
+           width:50%;
+           &:nth-child(2n){
+               border-right:none;
+           }
+       }
+    }
+}
+
+
+/*ユーザー編集フォーム*/
+.user_edit_form{
+    width: 50%;
+    margin:0 auto;
+    input,select{
+        margin:10px 0;
+    }
+    @media (max-width: $threshold){
+        width:90%;
+    }
+}

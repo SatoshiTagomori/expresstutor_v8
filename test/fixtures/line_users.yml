@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_id: MyString
+  display_name: MyString
+  picture: MyString
+  admin: false
+  teacher: false
+  customer: MyString
+  subscription: MyString
+
+two:
+  line_id: MyString
+  display_name: MyString
+  picture: MyString
+  admin: false
+  teacher: false
+  customer: MyString
+  subscription: MyString

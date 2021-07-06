@@ -1,0 +1,22 @@
+<h2>会員情報</h2>
+
+<section>
+    <dl class='profile'>
+        <dt>LINEアカウント</dt>
+        <dd><span class='profile_img' style='background-image:url(<%= current_user.picture %>)'></span><span><%= current_user.display_name %></span></dd>
+        <dt>EMAIL</dt>
+        <dd><%= current_user.profile.email %></dd>
+        <dt>お名前</dt>
+        <dd><%= current_user.profile.name %></dd>
+        <dt>お子様のお名前</dt>
+        <dd><%= current_user.profile.cname %></dd>
+        <dt>お住まいの都道府県</dt>
+        <dd><%= current_user.profile.pref.name %></dd>
+        <dt>電話番号</dt>
+        <dd><%= current_user.profile.tel %></dd>
+        <dt>お子様の生まれ月</dt>
+        <dd><%= current_user.profile.year %>年<%= current_user.profile.month %>月</dd>
+        <dt>学年</dt>
+        <dd><%= current_user.profile.gakunen %></dd>
+    </dl>
+</section>

@@ -1,0 +1,25 @@
+<div class='wave_back'></div>
+<%= link_to root_path,class: 'logo',data: {"turbolinks" => false} do %>
+    <%= image_tag 'logo.png' %>
+<% end %>
+<%= link_to profiles_path,class: 'profile_link',data: {"turbolinks" => false}  do %>
+    <%= image_tag 'btn_login_base.png' %>
+<% end %>
+
+<!--メニュー-->
+<nav>
+    <%= link_to 'わかる！解説動画',root_path, data:{"turbolinks"=>false} %>
+    <%= link_to 'わかる！解説動画',root_path, data:{"turbolinks"=>false} %>
+    <%= link_to '月額コース紹介',course_path, data:{"turbolinks"=>false} %>
+    <%= link_to 'わかる！解説動画',root_path, data:{"turbolinks"=>false} %>
+</nav>
+
+<!--ログイン後のメニュー-->
+<% if is_logined? %>
+<nav>
+    <%= link_to '会員トップ',profiles_path,data:{"turbolinks"=>false} %>
+    <%= link_to '会員情報編集',profile_edit_path,data:{"turbolinks"=>false} %>
+    <%= link_to 'お支払い',payment_path,data:{"turbolinks"=>false} %>
+    <%= link_to 'サインアウト',sign_out_path,data:{"turbolinks"=>false} %>
+</nav>
+<% end %>

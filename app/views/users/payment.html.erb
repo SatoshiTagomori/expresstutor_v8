@@ -1,0 +1,43 @@
+<h2>コース選択</h2>
+<section id='course' class='course' payment='true' api_key='<%= ENV['STRIPE_API_PUBLIC_KEY'] %>' contract_course_id='<%= current_user.course_id %>'></section>
+
+<h2>お支払い履歴</h2>
+<section>
+    <% if current_user.payment_logs.any? %>
+    <table class='table table-striped text-center'>
+        <thead>
+            <tr>
+                <th>決済日時</th>
+                <th>金額</th>
+                <th>領収書</th>
+                <th>返金</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @payments.each do |p| %>
+            <tr>
+                <td><%= Time.at(p.created.to_i).strftime('%Y年%m月%d日 %H:%M:%S') %></td>
+                <td>&yen;<%= p.amount.to_s(:delimited) %></td>
+                <td>
+                    <%= link_to p.receipt_url, target: :_blank do %>
+                    <button class='btn btn-info'>領収書</button>
+                    <% end %>
+                </td>
+                <td>
+                    <!-- クーリングオフ制約 -->
+                    <% if (Time.now.to_i - p.created.to_i)/(3600*24) < 8 then %>
+                        <% pi = PaymentLog.find_by(:payment_intent=>p.payment_intent) %>
+                        <% if able_to_refund?(p) %>
+                            <%= form_with url: refund_path do |f| %>
+                                <%= f.hidden_field :payment_log_id, value: pi.id %>
+                                <%= f.submit '返金',class: 'btn btn-warning', data: { confirm: "本当に返金しますか？"} %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% end %>
+</section>

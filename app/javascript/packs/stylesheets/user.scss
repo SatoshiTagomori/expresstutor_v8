@@ -1,0 +1,14 @@
+.profile{
+    dd{
+        font-size:24px;
+        border-top:solid 2px gray;
+    }
+}
+
+.profile_img{
+    display:inline-block;
+    width:24px;
+    height:24px;
+    background-size:contain;
+    border-radius:50%;
+}

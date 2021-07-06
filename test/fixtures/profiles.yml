@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_user: one
+  email: MyString
+  name: MyString
+  cname: MyString
+  pref: one
+  tel: MyString
+  year: 
+  month: 1
+
+two:
+  line_user: two
+  email: MyString
+  name: MyString
+  cname: MyString
+  pref: two
+  tel: MyString
+  year: 
+  month: 1
